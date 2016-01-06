@@ -1,0 +1,2 @@
+# sgit
+Shorter git syntax
