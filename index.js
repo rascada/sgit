@@ -4,6 +4,7 @@
 
 let inquirer = require('inquirer');
 let sGit = require('commander');
+let Git = require('nodegit');
 
 let pkg = require('./package');
 let host = require('./host');
@@ -29,5 +30,12 @@ let questions = [{
 ];
 
 inquirer.prompt(questions, function(answer) {
-  console.log(`git clone ${host(answer.host)}/${answer.scope}/${answer.repo} ...`);
+  let link = `${host(answer.host)}/${answer.scope}/${answer.repo}`;
+
+  Git
+    .Clone(link, answer.repo)
+    .then(function(repo) {
+      console.log(`Cloned ${answer.repo} successfully!`);
+    })
+    .catch(err => console.error(err));
 });
