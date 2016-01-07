@@ -4,6 +4,7 @@ let inquirer = require('inquirer');
 let sGit = require('commander');
 
 let pkg = require('./package');
+let host = require('./host');
 
 sGit
   .usage(' ')
@@ -26,5 +27,5 @@ let questions = [{
 ];
 
 inquirer.prompt(questions, function(answer) {
-  console.log(`git clone ${answer.host}/${answer.scope}/${answer.repo} ...`);
+  console.log(`git clone ${host(answer.host)}/${answer.scope}/${answer.repo} ...`);
 });
