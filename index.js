@@ -6,7 +6,7 @@ let commands = require('./commands');
 let pkg = require('./package');
 
 let Git = require('nodegit');
-let sGit = require('yargs')
+let sgit = require('yargs')
     .usage('Usage: sgit <command>')
     .demand(1, ' must provide command!')
     .version(pkg.version)
@@ -16,7 +16,7 @@ let sGit = require('yargs')
 
 Object.keys(commands)
   .forEach(name =>
-    sGit.command(name, commands[name].description));
+    sgit.command(name, commands[name].description));
 
-if (sGit.argv._[0] && commands[sGit.argv._[0]])
-  commands[sGit.argv._[0]].method();
+if (sgit.argv._[0] && commands[sgit.argv._[0]])
+  commands[sgit.argv._[0]].method(sgit);
