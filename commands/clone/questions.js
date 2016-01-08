@@ -1,6 +1,6 @@
 module.exports = [{
     name: 'host',
-    message: 'host',
+    message: 'host:',
     default: 'github',
   }, {
     name: 'scope',
