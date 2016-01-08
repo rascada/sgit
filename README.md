@@ -6,7 +6,7 @@ Shorter git syntax
 sgit clone
 
 ? host: (github) # also you can write bitbucket or gitlab
-? user: / organization rascada
+? user / organization: rascada
 ? repo: sgit
 ? folder name: (sgit)
 Cloned rascada/sgit as sgit successfully!
