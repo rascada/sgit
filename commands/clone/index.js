@@ -16,7 +16,7 @@ module.exports = {
         .then(function(repo) {
           console.log(`Cloned ${answer.scope}/${answer.repo} as ${answer.folder} successfully!`);
         })
-        .catch(err => console.error(err));
+        .catch(er => console.error(`\n${er.toString()}`));
     });
   },
 };
