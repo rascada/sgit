@@ -2,40 +2,18 @@
 
 'use strict';
 
-let inquirer = require('inquirer');
-let sGit = require('commander');
-let Git = require('nodegit');
-
+let commands = require('./commands');
 let pkg = require('./package');
-let host = require('./host');
 
-sGit
-  .usage(' ')
-  .version(pkg.version)
-  .parse(process.argv);
+let Git = require('nodegit');
+let sGit = require('yargs')
+    .usage('Usage: sgit <command>')
+    .command('clone', 'interactive clone repo')
+    .demand(1, ' must provide command!')
+    .version(pkg.version)
+    .help('help')
+    .alias('help', 'h')
+    .alias('version', 'v');
 
-let questions = [{
-    name: 'host',
-    message: 'host',
-    default: 'github',
-  }, {
-    name: 'scope',
-    message: 'user / organization:',
-    validate: scope => !scope ? `Can't clone without scope` : true,
-  }, {
-    name: 'repo',
-    message: 'repo:',
-    validate: repo => !repo ? `Can't clone nothing` : true,
-  },
-];
-
-inquirer.prompt(questions, function(answer) {
-  let link = `${host(answer.host)}/${answer.scope}/${answer.repo}`;
-
-  Git
-    .Clone(link, answer.repo)
-    .then(function(repo) {
-      console.log(`Cloned ${answer.repo} successfully!`);
-    })
-    .catch(err => console.error(err));
-});
+if (sGit.argv._[0] && commands[sGit.argv._[0]])
+  commands[sGit.argv._[0]]();
