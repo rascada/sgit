@@ -10,5 +10,9 @@ module.exports = [{
     name: 'repo',
     message: 'repo:',
     validate: repo => !repo ? `Can't clone nothing` : true,
+  }, {
+    name: 'folder',
+    message: 'folder name:',
+    default: answer => answer.repo,
   },
 ];
