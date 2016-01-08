@@ -3,6 +3,7 @@
 let questions = require('./questions');
 let inquirer = require('inquirer');
 let host = require('./host');
+let Git = require('nodegit');
 
 module.exports = {
   description: 'interactive clone repo',

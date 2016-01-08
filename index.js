@@ -5,7 +5,6 @@
 let commands = require('./commands');
 let pkg = require('./package');
 
-let Git = require('nodegit');
 let sgit = require('yargs')
     .usage('Usage: sgit <command>')
     .demand(1, ' must provide command!')
