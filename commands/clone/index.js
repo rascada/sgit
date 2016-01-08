@@ -14,7 +14,7 @@ module.exports = {
       Git
         .Clone(link, answer.folder)
         .then(function(repo) {
-          console.log(`Cloned ${answer.repo} successfully!`);
+          console.log(`Cloned ${answer.scope}/${answer.repo} as ${answer.folder} successfully!`);
         })
         .catch(err => console.error(err));
     });
