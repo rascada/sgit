@@ -12,7 +12,7 @@ module.exports = {
       let link = `${host(answer.host)}/${answer.scope}/${answer.repo}`;
 
       Git
-        .Clone(link, answer.repo)
+        .Clone(link, answer.folder)
         .then(function(repo) {
           console.log(`Cloned ${answer.repo} successfully!`);
         })
