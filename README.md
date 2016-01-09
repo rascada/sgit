@@ -29,7 +29,7 @@ sgit clone rascada/sgit
 ```
 with host argument
 ```sh
-sgit clone bitbucket rascada/sgit
+sgit clone bitbucket rascada/sgit # or sgit clone bitbucket
 
 ? host: (bitbucket)
 ? user / organization: (rascada)

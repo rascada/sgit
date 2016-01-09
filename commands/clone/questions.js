@@ -12,6 +12,7 @@ module.exports = function(argv) {
   }else if (argv.length > 1) repo = 1;
 
   if (repo) repo = argv[repo].split('/');
+  else if (argv[1]) host = argv[1];
 
   return [{
       name: 'host',
