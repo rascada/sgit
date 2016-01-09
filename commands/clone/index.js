@@ -2,7 +2,7 @@
 
 let questions = require('./questions');
 let inquirer = require('inquirer');
-let clone = require('./clone');
+let Clone = require('./Clone');
 
 module.exports = {
   description: 'interactive clone repo',
@@ -12,7 +12,7 @@ module.exports = {
 
       //console.log(`${token}:x-oauth-basic@`);
 
-      clone({
+      let clone = new Clone({
         host: answer.host,
         scope: answer.scope,
         name: answer.repo,
