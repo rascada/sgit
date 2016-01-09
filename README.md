@@ -1,7 +1,10 @@
 # sgit
-Shorter git syntax
+Simpler and shorter git syntax
 
 ## clone module
+```sh
+# (text in parentheses) is proposed by sgit
+```
 ```sh
 sgit clone
 
@@ -9,5 +12,29 @@ sgit clone
 ? user / organization: rascada
 ? repo: sgit
 ? folder name: (sgit)
-Cloned rascada/sgit as sgit successfully!
+
+ Cloned rascada/sgit from github to ./sgit
+```
+or
+```sh
+sgit clone rascada/sgit
+
+? host: (github)
+? user / organization: (rascada)
+? repo: (sgit)
+? folder name: (sgit)
+
+ Cloned rascada/sgit as sgit successfully
+
+```
+with host argument
+```sh
+sgit clone bitbucket rascada/sgit
+
+? host: (bitbucket)
+? user / organization: (rascada)
+? repo: (sgit)
+? folder name: (sgit)
+
+ Error: Request failed with status code: 404
 ```

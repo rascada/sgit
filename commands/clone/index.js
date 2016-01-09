@@ -7,8 +7,8 @@ let Git = require('nodegit');
 
 module.exports = {
   description: 'interactive clone repo',
-  method() {
-    inquirer.prompt(questions, function(answer) {
+  method(sgit) {
+    inquirer.prompt(questions(sgit.argv._), function(answer) {
       let link = `${host(answer.host)}/${answer.scope}/${answer.repo}`;
 
       Git
