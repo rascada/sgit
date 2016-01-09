@@ -11,7 +11,12 @@ let sgit = require('yargs')
     .version(pkg.version)
     .help('help')
     .alias('help', 'h')
-    .alias('version', 'v');
+    .alias('version', 'v')
+    .option('fast', {
+      alias: 'f',
+      boolean: true,
+      desc: 'Omit all questions with proposed answer',
+    });;
 
 Object.keys(commands)
   .forEach(name =>

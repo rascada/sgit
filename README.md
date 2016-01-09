@@ -25,7 +25,11 @@ sgit clone rascada/sgit
 ? folder name: (sgit)
 
  Cloned rascada/sgit as sgit successfully
+```
+```sh
+sgit clone rascada/sgit -f # --fast
 
+ Cloned rascada/sgit as sgit successfully
 ```
 with host argument
 ```sh
