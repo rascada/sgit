@@ -7,27 +7,43 @@ module.exports = class Clone {
   constructor(repo) {
     this.repo = repo;
 
-    return this.start();
+    return this.clone();
   }
 
-  start(repo) {
-    repo = repo || this.repo;
+  url() {
+    let repo = this.repo;
+    let url = `${host(repo.host)}/${repo.scope}/${repo.name}`;
+
+    if (repo.token) {
+      let token = require('../cred').token();
+      let pos = url.indexOf('://') + 3;
+
+      url = url.slice(0, pos) + `${token}:x-oauth-basic@` + url.slice(pos) + '.git';
+    }
+
+    return repo.url = url;
+  }
+
+  success(git) {
+    return repo =>
+      git.done(rep =>
+        rep instanceof Git.Repository ? res(repo) : rej('something broken'));
+  }
+
+  clone(repo) {
+    if (!repo) repo = this.repo;
 
     return new Promise((res, rej) => {
-      let url = `${host(repo.host)}/${repo.scope}/${repo.name}`;
+      let git = Git.Clone(this.url(), repo.folder);
 
-      Git
-        .Clone(url, repo.folder, {
-          remoteCallbacks: {
-            certificateCheck: _ => 1,
-            credentials: _ => {
-              Git.Cred.userpassPlaintextNew(token, 'x-oauth-basic');
-            },
-          },
-        })
-        .catch(er => rej(er))
-        .done(function(rep) {
-          rep instanceof Git.Repository ? res(repo) : rej('something broken');
+      git
+        .then(this.success(git))
+        .catch(er => {
+          console.log(` failed to fetch ${repo.url}`);
+          if (!repo.token) {
+            repo.token = true;
+            this.clone(repo).then(this.success(git)).catch(er => rej(er));
+          } else rej(er);
         });
     });
   }

@@ -8,10 +8,6 @@ module.exports = {
   description: 'interactive clone repo',
   method(sgit) {
     inquirer.prompt(questions(sgit.argv), function(answer) {
-      //let token = require('../cred').token();
-
-      //console.log(`${token}:x-oauth-basic@`);
-
       let clone = new Clone({
         host: answer.host,
         scope: answer.scope,
