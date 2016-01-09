@@ -1,6 +1,6 @@
 {
   "name": "sgit",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "shorter git syntax",
   "main": "index.js",
   "bin": {
