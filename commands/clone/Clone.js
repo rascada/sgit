@@ -27,13 +27,7 @@ module.exports = class Clone {
         })
         .catch(er => rej(er))
         .done(function(rep) {
-          /*
-          if (rep instanceof Git.Repository)
-            console.info('We cloned the repo!');
-          else
-            console.error('Something borked :(');
-          */
-          res(repo);
+          rep instanceof Git.Repository ? res(repo) : rej('something broken');
         });
     });
   }
