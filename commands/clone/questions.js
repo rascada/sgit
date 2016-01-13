@@ -51,7 +51,7 @@ module.exports = function(argv) {
       name: 'repo',
       message: 'repo:',
       validate: repo => !repo ? `Can't clone nothing` : true,
-      default: answer => repo ? repo[1] : '',
+      default: answer => repo ? repo[1] : null,
       when: answer => {
         if (repo && !argv.p) {
           answer.repo = repo[1];
