@@ -1,6 +1,7 @@
 'use strict';
 
 let resolveHost = require('./host');
+const exec = require('child_process').exec;
 
 module.exports = function(argv) {
   let args = argv._;
@@ -32,7 +33,12 @@ module.exports = function(argv) {
       name: 'scope',
       message: 'user / organization:',
       validate: scope => !scope ? `Can't clone without scope` : true,
-      default: answer => repo ? repo[0] : '',
+      default(answer) {
+        let done = this.async();
+
+        exec('git config --global user.name', (err, stdout, stderr) => done(repo ? repo[0] : stdout.replace('\n', '')));
+      },
+
       when: answer => {
         if (repo && !argv.p) {
           answer.scope = repo[0];
