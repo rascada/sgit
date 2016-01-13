@@ -21,7 +21,7 @@ module.exports = function(argv) {
       message: 'host:',
       default: resolveHost(host, true),
       when: answer => {
-        if (argv.f) {
+        if (!argv.p) {
           answer.host = resolveHost(host, true);
           return false;
         }
@@ -34,7 +34,7 @@ module.exports = function(argv) {
       validate: scope => !scope ? `Can't clone without scope` : true,
       default: answer => repo ? repo[0] : '',
       when: answer => {
-        if (repo && argv.f) {
+        if (repo && !argv.p) {
           answer.scope = repo[0];
           return false;
         }
@@ -47,7 +47,7 @@ module.exports = function(argv) {
       validate: repo => !repo ? `Can't clone nothing` : true,
       default: answer => repo ? repo[1] : '',
       when: answer => {
-        if (repo && argv.f) {
+        if (repo && !argv.p) {
           answer.repo = repo[1];
           return false;
         }
@@ -59,7 +59,7 @@ module.exports = function(argv) {
       message: 'folder name:',
       default: answer => answer.repo || repo[1],
       when: answer => {
-        if (argv.f) {
+        if (!argv.p) {
           answer.folder = answer.repo;
           return false;
         }

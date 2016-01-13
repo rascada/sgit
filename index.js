@@ -12,11 +12,11 @@ let sgit = require('yargs')
     .help('help')
     .alias('help', 'h')
     .alias('version', 'v')
-    .option('fast', {
-      alias: 'f',
+    .option('prompt', {
+      alias: 'p',
       boolean: true,
-      desc: 'Omit all questions with proposed answer',
-    });;
+      desc: 'Prompt all unknown questions',
+    });
 
 Object.keys(commands)
   .forEach(name =>

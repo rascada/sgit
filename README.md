@@ -1,23 +1,38 @@
 # sgit
-Simpler and shorter git syntax
+Simpler and shorter git syntax with questions
 
 ## clone module
 ```sh
-# (text in parentheses) is proposed by sgit
+sgit clone rascada/sgit # git clone https://github.com/rascada/sgit.git
+
+ Cloned rascada/sgit as sgit successfully
 ```
 ```sh
 sgit clone
 
-? host: (github) # also you can write bitbucket or gitlab
+? user / organization: rascada
+? repo: sgit
+
+ Cloned rascada/sgit as sgit successfully
+```
+### prompt
+sgit also can ask for all information with prompt option:
+```sh
+# (text in parentheses) is proposed by sgit
+```
+```sh
+sgit clone -p # --prompt
+
+? host: (github)
 ? user / organization: rascada
 ? repo: sgit
 ? folder name: (sgit)
 
- Cloned rascada/sgit from github to ./sgit
+ Cloned rascada/sgit as sgit successfully
 ```
 or
 ```sh
-sgit clone rascada/sgit
+sgit clone rascada/sgit -p
 
 ? host: (github)
 ? user / organization: (rascada)
@@ -26,19 +41,19 @@ sgit clone rascada/sgit
 
  Cloned rascada/sgit as sgit successfully
 ```
-```sh
-sgit clone rascada/sgit -f # --fast
+### hosts
+#### available hosts
+- github (default)
+- bitbucket
+- gitlab
 
- Cloned rascada/sgit as sgit successfully
-```
-with host argument
 ```sh
-sgit clone bitbucket rascada/sgit # or sgit clone bitbucket
+sgit clone bitbucket rascada/sgit -p # or sgit clone bitbucket
 
 ? host: (bitbucket)
 ? user / organization: (rascada)
 ? repo: (sgit)
 ? folder name: (sgit)
 
- Error: Request failed with status code: 404
+ Error: Request failed with status code: 404 # sgit repo is only on github
 ```
