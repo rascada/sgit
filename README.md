@@ -10,7 +10,7 @@ sgit clone rascada/sgit # git clone https://github.com/rascada/sgit.git
 ```sh
 sgit clone
 
-? user / organization: rascada
+? user / organization: (rascada)
 ? repo: sgit
 
  Cloned rascada/sgit as sgit successfully
@@ -24,7 +24,7 @@ sgit also can ask for all information with prompt option:
 sgit clone -p # --prompt
 
 ? host: (github)
-? user / organization: rascada
+? user / organization: (rascada)
 ? repo: sgit
 ? folder name: (sgit)
 
